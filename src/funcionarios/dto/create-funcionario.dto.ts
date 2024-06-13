@@ -1,1 +1,5 @@
-export class CreateFuncionarioDto {}
+export class CreateFuncionarioDto {
+    nome: string;
+    email: string;
+    senha: string;
+}

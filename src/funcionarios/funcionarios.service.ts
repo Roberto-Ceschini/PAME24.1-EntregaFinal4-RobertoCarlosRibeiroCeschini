@@ -6,7 +6,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class FuncionariosService {
 
-  constructor(private readonly prisma:PrismaService){}
+  constructor(private readonly prisma: PrismaService){}
 
   create(data: CreateFuncionarioDto) {
     const funcionarioCriado = this.prisma.funcionario.create({data});
@@ -29,6 +29,7 @@ export class FuncionariosService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} funcionario`;
+    this.prisma.funcionario.delete({where: {id}});
+    return "Cliente removido com sucesso!"
   }
 }
