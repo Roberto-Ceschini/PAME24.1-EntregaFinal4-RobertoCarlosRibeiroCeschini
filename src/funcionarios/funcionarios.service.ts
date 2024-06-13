@@ -28,8 +28,8 @@ export class FuncionariosService {
     return funcionarioAtualizado;
   }
 
-  remove(id: number) {
-    this.prisma.funcionario.delete({where: {id}});
+  async remove(id: number) {
+    await this.prisma.funcionario.delete({where: {id}});
     return "Cliente removido com sucesso!"
   }
 }
