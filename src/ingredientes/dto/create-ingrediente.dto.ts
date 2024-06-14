@@ -1,1 +1,6 @@
-export class CreateIngredienteDto {}
+export class CreateIngredienteDto {
+    nome: string;
+    validade: Date;
+    fornecedor: string;
+
+}

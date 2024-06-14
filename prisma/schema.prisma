@@ -36,7 +36,7 @@ model Produto{
 model Ingrediente{
   id Int @id @default(autoincrement())
   nome String
-  validade String
+  validade DateTime
   fornecedor String
   checklists Checklist[]
   estoque Estoque[]

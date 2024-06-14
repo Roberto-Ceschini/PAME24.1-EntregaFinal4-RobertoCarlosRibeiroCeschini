@@ -14,7 +14,7 @@ export class ChecklistService {
   }
 
   findAll() {
-    const checklists = this.prisma.checklist.findMany();
+    const checklists = this.prisma.checklist.findMany({include: {ingrediente: true}});
     return checklists;
   }
 

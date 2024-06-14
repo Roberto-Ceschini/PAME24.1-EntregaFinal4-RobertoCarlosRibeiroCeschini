@@ -1,26 +1,35 @@
 import { Injectable } from '@nestjs/common';
 import { CreateIngredienteDto } from './dto/create-ingrediente.dto';
 import { UpdateIngredienteDto } from './dto/update-ingrediente.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class IngredientesService {
-  create(createIngredienteDto: CreateIngredienteDto) {
-    return 'This action adds a new ingrediente';
+
+  constructor(private readonly prisma: PrismaService){}
+
+  create(data: CreateIngredienteDto) {
+    const ingredienteCriado = this.prisma.ingrediente.create({data});
+    return ingredienteCriado;
   }
 
   findAll() {
-    return `This action returns all ingredientes`;
+    const ingredientes = this.prisma.ingrediente.findMany();
+    return ingredientes;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} ingrediente`;
+    const ingrediente = this.prisma.ingrediente.findUnique({where: {id}});
+    return ingrediente;
   }
 
   update(id: number, updateIngredienteDto: UpdateIngredienteDto) {
-    return `This action updates a #${id} ingrediente`;
+    const ingredienteAtualizado = this.prisma.ingrediente.update({where: {id}, data: updateIngredienteDto});
+    return ingredienteAtualizado;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} ingrediente`;
+  async remove(id: number) {
+      await this.prisma.ingrediente.delete({where: {id}});
+      return "Ingrediente removido com sucesso!"
   }
 }
