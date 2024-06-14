@@ -59,9 +59,9 @@ model Checklist{
   id Int @id @default(autoincrement())
   dataEncomenda DateTime
   status String //Pendente, recebido, usado
-  ingredienteId Int
+  ingredienteId Int?
 
-  ingrediente Ingrediente @relation(fields: [ingredienteId], references: [id])
+  ingrediente Ingrediente? @relation(fields: [ingredienteId], references: [id])
 
 }
 
