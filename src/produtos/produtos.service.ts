@@ -10,7 +10,7 @@ export class ProdutosService {
 
   async create(data: CreateProdutoDto) {
     const produtoCriado = await this.prisma.produto.create({data});
-
+    
     // Criar o registro no estoque 
     const estoqueCriado = await this.prisma.estoque.create({
       data: {

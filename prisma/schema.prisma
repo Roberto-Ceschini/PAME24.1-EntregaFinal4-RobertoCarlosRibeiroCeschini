@@ -25,7 +25,8 @@ model Funcionario {
 model Produto{
    id Int @id @default(autoincrement())
    nome String
-   quantidade Int
+   sabor String
+   quantidade Int?
    validade DateTime
    dataFabricacao DateTime
    registros Registro[]
@@ -36,6 +37,7 @@ model Produto{
 model Ingrediente{
   id Int @id @default(autoincrement())
   nome String
+  quantidade Int?
   validade DateTime
   fornecedor String
   checklists Checklist[]
@@ -47,10 +49,10 @@ model Registro{
   dataRegistro DateTime
   tipo String //Entrou ou saiu
   quantidade Int
-  funcionarioId Int?
+  funcionarioId Int
   produtoId Int?
 
-  funcionario Funcionario? @relation(fields: [funcionarioId], references: [id])
+  funcionario Funcionario @relation(fields: [funcionarioId], references: [id])
   produto Produto? @relation(fields: [produtoId], references: [id])
 
 }

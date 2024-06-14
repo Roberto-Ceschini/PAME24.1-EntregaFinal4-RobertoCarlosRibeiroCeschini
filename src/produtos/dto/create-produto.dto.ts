@@ -1,6 +1,7 @@
 export class CreateProdutoDto {
     nome: string;
-    quantidade: number;
+    sabor: string;
+    quantidade?: number;
     validade: Date;
     dataFabricacao: Date;
 }

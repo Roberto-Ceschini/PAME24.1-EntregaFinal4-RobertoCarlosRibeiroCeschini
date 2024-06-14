@@ -20,8 +20,8 @@ export class RegistrosService {
           ? produto.quantidade + data.quantidade
           : produto.quantidade - data.quantidade;
 
-          if (novaQuantidade <= 0){ //verifica se a novaQuantidade é negativa
-            novaQuantidade = 0;
+          if (novaQuantidade < 0){ //verifica se a novaQuantidade é negativa
+            return "A quantidade retirada é maior que a do estoque";
           }
 
         await this.prisma.produto.update({ //atualiza a entidade produto

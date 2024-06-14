@@ -1,5 +1,5 @@
 export class CreateChecklistDto {
     dataEncomenda: Date;
-    status: string;
+    status: string; //Pendente, recebido ou usado
     ingredienteId?: number;
 }
