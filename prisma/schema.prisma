@@ -45,13 +45,13 @@ model Ingrediente{
 model Registro{
   id Int @id @default(autoincrement())
   dataRegistro DateTime
-  tipo String //Entrou, saiu
+  tipo String //Entrou ou saiu
   quantidade Int
-  funcionarioId Int
-  produtoId Int
+  funcionarioId Int?
+  produtoId Int?
 
-  funcionario Funcionario @relation(fields: [funcionarioId], references: [id])
-  produto Produto @relation(fields: [produtoId], references: [id])
+  funcionario Funcionario? @relation(fields: [funcionarioId], references: [id])
+  produto Produto? @relation(fields: [produtoId], references: [id])
 
 }
 
