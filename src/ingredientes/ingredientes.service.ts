@@ -40,6 +40,7 @@ export class IngredientesService {
 
   async remove(id: number) {
       await this.prisma.ingrediente.delete({where: {id}});
+      await this.prisma.estoque.deleteMany({ where: {ingredienteId: id } });
       return "Ingrediente removido com sucesso!"
   }
 }

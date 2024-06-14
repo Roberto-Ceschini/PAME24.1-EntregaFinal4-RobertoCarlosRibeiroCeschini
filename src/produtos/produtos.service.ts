@@ -38,6 +38,7 @@ export class ProdutosService {
 
   async remove(id: number) {
       await this.prisma.produto.delete({where: {id}});
+      await this.prisma.estoque.deleteMany({ where: { produtoId: id } });//deleta o produto no estoque
       return "Produto removido com sucesso!"
   }
 }
