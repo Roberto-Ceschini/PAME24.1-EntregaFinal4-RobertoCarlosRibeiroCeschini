@@ -8,8 +8,18 @@ export class IngredientesService {
 
   constructor(private readonly prisma: PrismaService){}
 
-  create(data: CreateIngredienteDto) {
-    const ingredienteCriado = this.prisma.ingrediente.create({data});
+  async create(data: CreateIngredienteDto) {
+    const ingredienteCriado = await this.prisma.ingrediente.create({data});
+
+    // Criar o registro no estoque 
+    const estoqueCriado = await this.prisma.estoque.create({
+      data: {
+        ingredienteId: ingredienteCriado.id, // Associar ao ingrediente recém-criado
+        }
+
+    });
+
+
     return ingredienteCriado;
   }
 

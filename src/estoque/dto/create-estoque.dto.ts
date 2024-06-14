@@ -1,1 +1,4 @@
-export class CreateEstoqueDto {}
+export class CreateEstoqueDto {
+    ingredienteId?: number;
+    produtoId?: number;
+}

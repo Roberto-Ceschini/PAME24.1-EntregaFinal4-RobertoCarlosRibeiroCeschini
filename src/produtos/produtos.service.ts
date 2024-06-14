@@ -8,8 +8,16 @@ export class ProdutosService {
 
   constructor(private readonly prisma: PrismaService){}
 
-  create(data: CreateProdutoDto) {
-    const produtoCriado = this.prisma.produto.create({data});
+  async create(data: CreateProdutoDto) {
+    const produtoCriado = await this.prisma.produto.create({data});
+
+    // Criar o registro no estoque 
+    const estoqueCriado = await this.prisma.estoque.create({
+      data: {
+        produtoId: produtoCriado.id, // Associar ao produto recém-criado
+        }
+
+    });
     return produtoCriado;
   }
 
