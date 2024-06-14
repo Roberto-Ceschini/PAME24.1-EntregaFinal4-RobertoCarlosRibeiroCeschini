@@ -7,9 +7,10 @@ import { RegistrosModule } from './registros/registros.module';
 import { IngredientesModule } from './ingredientes/ingredientes.module';
 import { ChecklistModule } from './checklist/checklist.module';
 import { PrismaService } from './prisma/prisma.service';
+import { EstoqueModule } from './estoque/estoque.module';
 
 @Module({
-  imports: [FuncionariosModule, ProdutosModule, RegistrosModule, IngredientesModule, ChecklistModule],
+  imports: [FuncionariosModule, ProdutosModule, RegistrosModule, IngredientesModule, ChecklistModule, EstoqueModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })

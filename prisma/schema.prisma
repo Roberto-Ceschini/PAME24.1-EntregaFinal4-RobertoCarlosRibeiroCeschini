@@ -29,6 +29,7 @@ model Produto{
    validade DateTime
    dataFabricacao DateTime
    registros Registro[]
+   estoque Estoque[]
    
 }
 
@@ -38,6 +39,7 @@ model Ingrediente{
   validade String
   fornecedor String
   checklists Checklist[]
+  estoque Estoque[]
 }
 
 model Registro{
@@ -61,5 +63,15 @@ model Checklist{
 
   ingrediente Ingrediente @relation(fields: [ingredienteId], references: [id])
 
+}
+
+model Estoque {
+  id Int @id @default(autoincrement())
+  produtoId Int?
+  ingredienteId Int?
+
+  ingrediente Ingrediente? @relation(fields: [ingredienteId], references: [id])
+  produto Produto? @relation(fields: [produtoId], references: [id])
+  
 }
 

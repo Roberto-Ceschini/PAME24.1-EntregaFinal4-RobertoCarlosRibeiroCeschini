@@ -1,1 +1,5 @@
-export class CreateChecklistDto {}
+export class CreateChecklistDto {
+    dataEncomenda: Date;
+    status: string;
+    ingredienteId: number;
+}
