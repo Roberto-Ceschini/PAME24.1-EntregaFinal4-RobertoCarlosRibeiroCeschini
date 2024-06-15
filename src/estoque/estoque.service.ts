@@ -17,7 +17,6 @@ export class EstoqueService {
     const estoques = await this.prisma.estoque.findMany({
       include: {
         produto: true,
-        ingrediente: true,
       },
     });
     return estoques;
@@ -28,7 +27,6 @@ export class EstoqueService {
       where: { id },
       include: {
         produto: true,
-        ingrediente: true,
       },
     });
     return estoque;
@@ -40,7 +38,6 @@ export class EstoqueService {
       data: updateEstoqueDto,
       include: {
         produto: true,
-        ingrediente: true,
       },
     });
     return estoqueAtualizado;

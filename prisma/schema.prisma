@@ -37,11 +37,9 @@ model Produto{
 model Ingrediente{
   id Int @id @default(autoincrement())
   nome String
-  quantidade Int?
   validade DateTime
   fornecedor String
   checklists Checklist[]
-  estoque Estoque[]
 }
 
 model Registro{
@@ -70,9 +68,7 @@ model Checklist{
 model Estoque {
   id Int @id @default(autoincrement())
   produtoId Int?
-  ingredienteId Int?
 
-  ingrediente Ingrediente? @relation(fields: [ingredienteId], references: [id])
   produto Produto? @relation(fields: [produtoId], references: [id])
   
 }

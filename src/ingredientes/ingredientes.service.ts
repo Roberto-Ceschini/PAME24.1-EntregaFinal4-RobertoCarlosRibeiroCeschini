@@ -11,15 +11,6 @@ export class IngredientesService {
   async create(data: CreateIngredienteDto) {
     const ingredienteCriado = await this.prisma.ingrediente.create({data});
 
-    // Criar o registro no estoque 
-    const estoqueCriado = await this.prisma.estoque.create({
-      data: {
-        ingredienteId: ingredienteCriado.id, // Associar ao ingrediente recém-criado
-        }
-
-    });
-
-
     return ingredienteCriado;
   }
 
@@ -40,7 +31,6 @@ export class IngredientesService {
 
   async remove(id: number) {
       await this.prisma.ingrediente.delete({where: {id}});
-      await this.prisma.estoque.deleteMany({ where: {ingredienteId: id } });
       return "Ingrediente removido com sucesso!"
   }
 }
